@@ -1,0 +1,14 @@
+resources:
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+  - persistent-volume.yaml
+
+namespace: vaultwarden
+
+secretGenerator:
+  - name: vaultwarden-tls
+    files:
+      - tls.crt=cert.pem
+      - tls.key=key.pem
+    type: "kubernetes.io/tls"
